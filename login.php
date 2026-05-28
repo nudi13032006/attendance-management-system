@@ -22,7 +22,7 @@ if(isset($_POST['login']))
     }
     else
     {
-        echo "Invalid Email or Password!";
+        echo "<script>alert('Invalid Credentials')</script>";
     }
 }
 ?>
@@ -32,7 +32,7 @@ if(isset($_POST['login']))
 
 <head>
 
-<title>Student Login</title>
+<title>Attendance Management System</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -40,27 +40,60 @@ if(isset($_POST['login']))
 
 <body>
 
-<div class="container">
+<div class="auth-container">
 
-<h2>Student Login</h2>
+<div class="auth-box">
+
+<h1>AMS Portal 🚀</h1>
+
+<p>Smart Attendance Management System</p>
 
 <form method="POST">
 
-<input type="email"
+<div class="input-group">
+
+<input
+type="email"
 name="email"
 placeholder="Enter Email"
 required>
 
-<input type="password"
+</div>
+
+<div class="input-group">
+
+<input
+type="password"
 name="password"
 placeholder="Enter Password"
 required>
 
-<button type="submit" name="login">
+</div>
+
+<button class="btn"
+type="submit"
+name="login">
+
 Login
+
 </button>
 
 </form>
+
+<p style="text-align:center; margin-top:20px; color:#cbd5e1;">
+
+New Student?
+
+<a href="register.php"
+style="color:#818cf8; text-decoration:none;">
+
+Create Account
+
+</a>
+
+</p>
+
+</div>
 
 </div>
 

@@ -1,75 +1,106 @@
 <?php
 include("db.php");
 
+/* SQL QUERY */
+
 $sql = "SELECT * FROM attendance";
 
-$result = mysqli_query($conn,$sql);
+/* STORE QUERY FOR DISPLAY */
 
+$query_display = $sql;
+
+/* EXECUTE QUERY */
+
+$result = mysqli_query($conn,$sql);
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-<link rel="stylesheet" href="css/style.css">
+
 <title>View Attendance</title>
 
-<style>
-
-body{
-    font-family: Arial;
-    background-color: #f2f2f2;
-}
-
-.container{
-    width: 80%;
-    margin: 50px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-table{
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, th, td{
-    border: 1px solid black;
-}
-
-th, td{
-    padding: 10px;
-    text-align: center;
-}
-
-th{
-    background: blue;
-    color: white;
-}
-
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="sidebar">
 
-<h2>Attendance Records</h2>
+<div class="logo">
+AMS Portal
+</div>
+
+<a href="dashboard.php">🏠 Dashboard</a>
+
+<a href="mark_attendance.php">✅ Mark Attendance</a>
+
+<a href="view_attendance.php">📋 View Attendance</a>
+
+<a href="students.php">👨‍🎓 Students</a>
+
+<a href="subjects.php">📚 Subjects</a>
+
+<a href="logout.php">🚪 Logout</a>
+
+</div>
+
+<div class="main">
+
+<h1>Attendance Records 📋</h1>
+
+<!-- QUERY DISPLAY CARD -->
+
+<div class="card" style="margin-top:25px;">
+
+<h3>Executed SQL Query 💻</h3>
+
+<p
+style="
+margin-top:15px;
+color:#38bdf8;
+font-family:monospace;
+font-size:15px;
+">
+
+<?php
+echo $query_display;
+?>
+
+</p>
+
+<p
+style="
+margin-top:15px;
+color:#94a3b8;
+">
+
+Output:
+Attendance data retrieved successfully.
+
+</p>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
 
 <table>
 
 <tr>
+
 <th>ID</th>
 <th>Student Name</th>
-<th>Subject Name</th>
+<th>Subject</th>
 <th>Date</th>
 <th>Status</th>
+
 </tr>
 
 <?php
-
 while($row = mysqli_fetch_assoc($result))
 {
 ?>
@@ -96,5 +127,8 @@ while($row = mysqli_fetch_assoc($result))
 
 </div>
 
+</div>
+
 </body>
+
 </html>

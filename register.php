@@ -8,16 +8,20 @@ if(isset($_POST['register']))
     $password = $_POST['password'];
     $department = $_POST['department'];
 
-    $sql = "INSERT INTO students(name,email,password,department)
-            VALUES('$name','$email','$password','$department')";
+    $sql = "INSERT INTO students
+            (name,email,password,department)
+
+            VALUES
+
+            ('$name','$email','$password','$department')";
 
     if(mysqli_query($conn,$sql))
     {
-        echo "Registration Successful!";
+        echo "<script>alert('Registration Successful')</script>";
     }
     else
     {
-        echo "Error!";
+        echo "<script>alert('Registration Failed')</script>";
     }
 }
 ?>
@@ -26,64 +30,93 @@ if(isset($_POST['register']))
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Student Registration</title>
 
-    <style>
+<title>Create Account</title>
 
-        body{
-            font-family: Arial;
-            background-color: #f2f2f2;
-        }
-
-        .container{
-            width: 400px;
-            margin: 100px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-        }
-
-        input{
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-        }
-
-        button{
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            background: blue;
-            color: white;
-            border: none;
-        }
-
-    </style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="auth-container">
 
-<h2>Student Registration</h2>
+<div class="auth-box">
+
+<h1>Join AMS 🚀</h1>
+
+<p>Create Your Student Account</p>
 
 <form method="POST">
 
-<input type="text" name="name" placeholder="Enter Name" required>
+<div class="input-group">
 
-<input type="email" name="email" placeholder="Enter Email" required>
+<input
+type="text"
+name="name"
+placeholder="Enter Full Name"
+required>
 
-<input type="password" name="password" placeholder="Enter Password" required>
+</div>
 
-<input type="text" name="department" placeholder="Enter Department" required>
+<div class="input-group">
 
-<button type="submit" name="register">Register</button>
+<input
+type="email"
+name="email"
+placeholder="Enter Email"
+required>
+
+</div>
+
+<div class="input-group">
+
+<input
+type="password"
+name="password"
+placeholder="Create Password"
+required>
+
+</div>
+
+<div class="input-group">
+
+<input
+type="text"
+name="department"
+placeholder="Enter Department"
+required>
+
+</div>
+
+<button
+class="btn"
+type="submit"
+name="register">
+
+Create Account
+
+</button>
 
 </form>
+
+<p style="text-align:center; margin-top:20px; color:#cbd5e1;">
+
+Already have an account?
+
+<a href="login.php"
+style="color:#818cf8; text-decoration:none;">
+
+Login
+
+</a>
+
+</p>
+
+</div>
 
 </div>
 
 </body>
+
 </html>
